@@ -8,3 +8,16 @@ before_install:
 
 script:
   - docker run -e CI=true djulbicb/test_app npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "app-nginx-react-aws-travisci"
+  env: "Appnginxreactawstravisci-env"
+  bucket_name: "elasticbeanstalk-us-east-2-494977117738"
+  bucket_path: "app-nginx-react-aws-travisci"
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: 
+    secure: "$AWS_SECRET_KEY"
