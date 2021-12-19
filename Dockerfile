@@ -9,5 +9,6 @@ RUN npm run build
 
 # faza 2: nginx servira
 FROM nginx 
+EXPOSE 80
 COPY --from=builder /app/build /usr/share/nginx/html
 # default command starts nginx, so no need to specify
