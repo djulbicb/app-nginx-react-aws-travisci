@@ -1,22 +1,8 @@
 version: '3'
 services:
-  react-web-app:
+  web:
     build:
-      context: ./
-      dockerfile: Dockerfile.dev
-    volumes:
-      - /app/node_modules
-      - ./:/app
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - 9000:3000
-    environment:
-      - CHOKIDAR_USEPOLLING=true    
-
-  react-web-app-tests:
-    build:
-      context: ./
-      dockerfile: Dockerfile.dev
-    volumes:
-      - /app/node_modules
-      - ./:/app
-    command: ["npm", "run", "test"]
+      - '80:80'
